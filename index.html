@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Structure created using Recursion</title>
+</head>
+<body>
+    
+    <div id="result"></div>
+    
+
+<script>
+
+function createMenuStructure(menuStructure) {
+  let html = '<ul>';
+  for (let i = 0; i < menuStructure.length; i++) {
+    let item = menuStructure[i];
+    html += '<li>' + item.name;
+    if (item.submenu) {
+      html += createMenuStructure(item.submenu);
+    }
+    html += '</li>';
+  }
+  html += '</ul>';
+  return html;
+}
+
+
+const menuStructure = [
+  {
+    name: 'Menu Item 1',
+    submenu: [
+      { name: 'Submenu Item 1' },
+      { name: 'Submenu Item 2' },
+      { name: 'Submenu Item 3' },
+    ],
+  },
+  {
+    name: 'Menu Item 2',
+    submenu: [
+      { name: 'Submenu Item 1' },
+      { name: 'Submenu Item 2' },
+      { name: 'Submenu Item 3' },
+    ],
+  },
+  {
+    name: 'Menu Item 3',
+    submenu: [
+      { name: 'Submenu Item 1' },
+      { name: 'Submenu Item 2' },
+      { name: 'Submenu Item 3' },
+    ],
+  },
+];
+
+const html = createMenuStructure(menuStructure);
+console.log(html);
+document.getElementById("result").innerText = html;
+</script>    
+</body>
+</html>
